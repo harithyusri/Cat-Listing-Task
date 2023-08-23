@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { ListingPageRoutingModule } from './listing-routing.module';
-
 import { ListingPage } from './listing.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    ListingPageRoutingModule
-  ],
-  declarations: [ListingPage]
+  declarations: [ListingPage],
+  imports: [BrowserModule, IonicModule.forRoot(), ListingPageRoutingModule, HttpClientModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
+  bootstrap: [ListingPage]
+  
 })
 export class ListingPageModule {}
+
+
+

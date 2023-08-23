@@ -1,11 +1,11 @@
-
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title class="bold-title">Cat Listing</ion-title>
   </ion-toolbar>
   <ion-card class="card-width">
     <ion-toolbar>
-      <ion-searchbar color="tertiary" placeholder="Tertiary"></ion-searchbar>
+      <ion-input placeholder="Enter text"></ion-input>
+      <ion-button>Search</ion-button>
     </ion-toolbar>
     <ion-list class="select-list">
       <ion-item>
@@ -14,23 +14,31 @@
           <ion-select-option value="Breed">Breed</ion-select-option>
           <ion-select-option value="Country">Country</ion-select-option>
           <ion-select-option value="Origin">Origin</ion-select-option>
+          <ion-select-option value="Coat">Coat</ion-select-option>
+          <ion-select-option value="Pattern">Pattern</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
   </ion-card>  
   <hr><hr><hr>
-  <ion-card class="card-width">
-<ion-grid>
-  <ion-row>
-    <ion-col>BIL.</ion-col>
-    <ion-col>BREED</ion-col>
-    <ion-col>COUNTRY</ion-col>
-    <ion-col>ORIGIN</ion-col>
-    <ion-col>COAT</ion-col>
-    <ion-col>PATTERN</ion-col>
-  </ion-row>
-</ion-grid>
+  <ion-card class="card-width2">
+    <ion-grid *ngIf="cats">
+      <ion-row class="header-row">
+        <ion-col>BIL.</ion-col>
+        <ion-col>BREED</ion-col>
+        <ion-col>COUNTRY</ion-col>
+        <ion-col>ORIGIN</ion-col>
+        <ion-col>COAT</ion-col>
+        <ion-col>PATTERN</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let cat of cats; let i = index;">
+        <ion-col>{{ i + 1 }}</ion-col>
+        <ion-col>{{ cat.breed }}</ion-col>
+        <ion-col>{{ cat.country }}</ion-col>
+        <ion-col>{{ cat.origin }}</ion-col>
+        <ion-col>{{ cat.coat }}</ion-col>
+        <ion-col>{{ cat.pattern }}</ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
 </ion-header>
-
-
